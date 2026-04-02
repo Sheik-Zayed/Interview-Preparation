@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Delete Student</title>
+</head>
+<body>
+
+<h2>Delete Student</h2>
+
+ID: <input type="number" id="id"><br><br>
+
+<button onclick="deleteStudent()">Delete</button>
+
+<p id="msg"></p>
+
+<button onclick="goBack()">Back</button>
+
+<script>
+    function deleteStudent() {
+
+    const id = document.getElementById("id").value;
+
+    fetch(`http://localhost:8080/students/${id}`, {
+    method: "DELETE"
+    })
+    .then(response => {
+
+    if(!response.ok){
+    throw new Error("Student not found");
+    }
+
+    return response.text();
+
+    })
+    .then(() => {
+    document.getElementById("msg").innerText = "Deleted Successfully";
+    })
+    .catch(error => {
+    document.getElementById("msg").innerText = error.message;
+    });
+
+    }
+
+    function goBack(){
+    window.location.href = "student-dashboard.html";
+    }
+</script>
+
+</body>
+</html>

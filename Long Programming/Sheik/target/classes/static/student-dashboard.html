@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+        }
+        button {
+            padding: 15px 25px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Student Management Dashboard</h1>
+
+<button onclick="goTo('add-student.html')">Add Student</button>
+<button onclick="goTo('view-students.html')">View Students</button>
+<button onclick="goTo('update-student.html')">Update Student</button>
+<button onclick="goTo('delete-student.html')">Delete Student</button>
+
+<script>
+    function goTo(page) {
+        window.location.href = page;
+    }
+</script>
+
+</body>
+</html>
