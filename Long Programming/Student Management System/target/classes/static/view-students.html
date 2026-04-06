@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>View Students</title>
+</head>
+<body>
+
+<h2>Student List</h2>
+
+<button onclick="loadStudents()">Load</button> <button onclick="goBack()">Back</button>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+    </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+</table>
+
+<script>
+    function loadStudents() {
+
+    fetch("http://localhost:8080/students")
+    .then(res => res.json())
+    .then(data => {
+
+    let table = document.getElementById("tableBody");
+    table.innerHTML = "";
+
+    data.forEach(s => {
+    table.innerHTML += `
+    <tr>
+    <td>${s.id}</td>
+    <td>${s.name}</td>
+    <td>${s.age}</td>
+    </tr>
+    `;
+    });
+
+    });
+    }
+
+    function goBack(){
+    window.location.href = "student-dashboard.html";
+    }
+</script>
+
+</body>
+</html>

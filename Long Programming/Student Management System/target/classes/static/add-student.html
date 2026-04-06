@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Add Student</title>
+</head>
+<body>
+
+<h2>Add Student</h2>
+
+Name: <input type="text" id="name"><br><br>
+Age: <input type="number" id="age"><br><br>
+
+<button onclick="addStudent()">Save</button>
+
+<p id="msg"></p>
+
+<button onclick="goBack()">Back</button>
+
+<script>
+    function addStudent() {
+
+    const student = {
+    name: document.getElementById("name").value,
+    age: document.getElementById("age").value
+    };
+
+    fetch("http://localhost:8080/students", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(student)
+    })
+    .then(() => {
+    document.getElementById("msg").innerText = "Student Added";
+    });
+    }
+
+    function goBack(){
+    window.location.href = "student-dashboard.html";
+    }
+</script>
+
+</body>
+</html>
